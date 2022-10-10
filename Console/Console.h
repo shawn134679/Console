@@ -31,7 +31,6 @@ inline void Init() {
   mode |= ENABLE_VIRTUAL_TERMINAL_PROCESSING;
   SetConsoleMode(GetStdHandle(STD_OUTPUT_HANDLE), mode);
 }
-inline void SetBackColor(Color c) { SetBackColor(c.r, c.g, c.b); }
 inline void SetBackColor(int r, int g, int b) {
   assert(r >= 0);
   assert(r <= 255);
@@ -43,7 +42,6 @@ inline void SetBackColor(int r, int g, int b) {
   std::cout.setf(std::ios_base::basefield);
   back_color = { r,g,b };
 }
-inline void SetForeColor(Color c) { SetForeColor(c.r, c.g, c.b); }
 inline void SetForeColor(int r, int g, int b) {
   assert(r >= 0);
   assert(r <= 255);
