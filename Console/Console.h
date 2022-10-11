@@ -31,6 +31,17 @@ inline void Init() {
   mode |= ENABLE_VIRTUAL_TERMINAL_PROCESSING;
   SetConsoleMode(GetStdHandle(STD_OUTPUT_HANDLE), mode);
 }
+inline void SetBackColor(Color c) {
+  assert(c.r >= 0);
+  assert(c.r <= 255);
+  assert(c.g >= 0);
+  assert(c.g <= 255);
+  assert(c.b >= 0);
+  assert(c.b <= 255);
+  std::cout << CSI"48;2;" << std::hex << c.r << ';' << c.g << ';' << c.b << 'm';
+  std::cout.setf(std::ios_base::basefield);
+  back_color = c;
+}
 inline void SetBackColor(int r, int g, int b) {
   assert(r >= 0);
   assert(r <= 255);
@@ -41,6 +52,17 @@ inline void SetBackColor(int r, int g, int b) {
   std::cout << CSI"48;2;" << std::hex << r << ';' << g << ';' << b << 'm';
   std::cout.setf(std::ios_base::basefield);
   back_color = { r,g,b };
+}
+inline void SetForeColor(Color c) {
+  assert(c.r >= 0);
+  assert(c.r <= 255);
+  assert(c.g >= 0);
+  assert(c.g <= 255);
+  assert(c.b >= 0);
+  assert(c.b <= 255);
+  std::cout << CSI"38;2;" << std::hex << c.r << ';' << c.g << ';' << c.b << 'm';
+  std::cout.setf(std::ios_base::basefield);
+  fore_color = c;
 }
 inline void SetForeColor(int r, int g, int b) {
   assert(r >= 0);
