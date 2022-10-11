@@ -1,7 +1,7 @@
 /*
   copyright shawn 2022
   license MIT
-  version v2.0
+  version v2.1
 */
 
 #ifndef CONSOLE_H_
