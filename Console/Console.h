@@ -1,7 +1,7 @@
 /*
   copyright shawn 2022
   license MIT
-  version v2.1
+  version v3.0
 */
 
 #ifndef CONSOLE_H_
@@ -30,6 +30,9 @@ inline void Init() {
   GetConsoleMode(GetStdHandle(STD_OUTPUT_HANDLE), &mode);
   mode |= ENABLE_VIRTUAL_TERMINAL_PROCESSING;
   SetConsoleMode(GetStdHandle(STD_OUTPUT_HANDLE), mode);
+}
+inline bool KeyDown(int n) {
+  return GetAsyncKeyState(n) & 0x01;
 }
 inline void SetBackColor(Color c) {
   assert(c.r >= 0);
